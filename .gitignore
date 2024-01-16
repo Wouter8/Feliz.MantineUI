@@ -1,0 +1,13 @@
+
+.idea/
+
+bin/
+
+obj/
+
+.DS_Store
+
+*.jsx
+*.jsx.map
+*.fs.js
+*.fs.js.map
