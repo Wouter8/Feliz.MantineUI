@@ -1,8 +1,21 @@
 module Feliz.MantineUI.Props.NumberInputProps
 
+open Fable.Core.JS
 open Feliz
 open Fable.Core
+open Feliz.MantineUI
 open Feliz.MantineUI.Props.InputProps
+open Browser.Types
+open Fable.Core.JsInterop
+open Fable.Core
+open Feliz.Styles
+open System.ComponentModel
+open System
+
+[<Erase>]
+type NumberInputHandlers =
+    abstract member increment: unit -> unit
+    abstract member decrement: unit -> unit
 
 [<Erase>]
 module numberInput =
@@ -65,7 +78,9 @@ type numberInput =
     static member inline fixedDecimalScale'(value: bool) =
         Interop.mkAttr "fixedDecimalScale" value
 
-    /// TODO: handlerRef
+    /// Increment/decrement handlers.
+    static member inline handlers(value: IRefValue<NumberInputHandlers>) = Interop.mkAttr "handlers" value
+
     /// Determines whether the up/down controls should be hidden, false by default.
     static member inline hideControls = Interop.mkAttr "hideControls" true
     /// Determines whether the up/down controls should be hidden, false by default.
@@ -80,8 +95,18 @@ type numberInput =
     static member inline max(value: float) = Interop.mkAttr "max" value
     /// Minimum possible value.
     static member inline min(value: float) = Interop.mkAttr "min" value
+
     /// Called when value changes.
-    static member inline onChange(value: U2<string, float> -> unit) = Interop.mkAttr "onChange" value
+    static member inline onChange(value: string -> unit) = Interop.mkAttr "onChange" value
+
+    /// Called when value changes.
+    static member inline onChange(handler: Option<int> -> unit) =
+        Interop.mkAttr "onChange" (tryInt >> handler)
+
+    /// Called when value changes.
+    static member inline onChange(handler: Option<float> -> unit) =
+        Interop.mkAttr "onChange" (tryFloat >> handler)
+    //static member inline onChange(value: 't -> unit) = Interop.mkAttr "onChange" value
     /// Prefix added before the input value.
     static member inline prefix(value: string) = Interop.mkAttr "prefix" value
 
@@ -112,4 +137,18 @@ type numberInput =
         Interop.mkAttr "thousandSeparator" value
 
     /// Controlled component value.
-    static member inline value(value: float) = Interop.mkAttr "value" value
+    static member inline value(value: string) = Interop.mkAttr "value" value
+
+    /// Controlled component value.
+    static member inline value(value: int) = Interop.mkAttr "value" (string value)
+
+    /// Controlled component value.
+    static member inline value(value: float) = Interop.mkAttr "value" (string value)
+
+    /// Controlled component value.
+    static member inline value(value: Option<int>) =
+        Interop.mkAttr "value" (value |> Option.map string |> Option.defaultValue "")
+
+    /// Controlled component value.
+    static member inline value(value: Option<float>) =
+        Interop.mkAttr "value" (value |> Option.map string |> Option.defaultValue "")

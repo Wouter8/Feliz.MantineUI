@@ -2,15 +2,7 @@ module Feliz.MantineUI.Props.InputProps
 
 open Fable.Core
 open Feliz
-
-[<Erase>]
-type size =
-    static member inline sizeXs = Interop.mkAttr "size" "xs"
-    static member inline sizeSm = Interop.mkAttr "size" "sm"
-    static member inline sizeMd = Interop.mkAttr "size" "md"
-    static member inline sizeLg = Interop.mkAttr "size" "lg"
-    static member inline sizeXl = Interop.mkAttr "size" "xl"
-    static member inline sizeCustom(value: int) = Interop.mkAttr "size" value
+open Feliz.MantineUI
 
 
 [<Erase>]
@@ -40,10 +32,14 @@ module input =
         static member inline textarea = Interop.mkAttr "as" "textarea"
         static member inline custom(value: string) = Interop.mkAttr "as" value
 
+    [<Erase>]
+    type classNames =
+        static member inline wrapper(value: string) = unbox ("classNames.wrapper", value)
+        static member inline input(value: string) = unbox ("classNames.input", value)
+        static member inline section(value: string) = unbox ("classNames.section", value)
+
 [<Erase>]
 type input =
-    inherit size
-
     /// Sets disabled attribute on the input element to true.
     static member inline disabled = Interop.mkAttr "disabled" true
     /// Sets disabled attribute on the input element.
@@ -84,6 +80,8 @@ type input =
     static member inline required = Interop.mkAttr "required" true
     /// Sets required attribute on the input element.
     static member inline required'(value: bool) = Interop.mkAttr "required" value
+    static member inline size(value: Domain.Size) = Interop.mkAttr "size" value
+    static member inline size(value: string) = Interop.mkAttr "size" value
     /// Determines whether aria- and other accessibility attributes should be added to the input, true by default.
     static member inline withAria(value: bool) = Interop.mkAttr "withAria" value
     /// Determines whether the input should have red border and red text color when the error prop is set, true by
@@ -103,9 +101,18 @@ module inputLabel =
         static member inline label = Interop.mkAttr "labelElement" "label"
 
 [<Erase>]
-type inputWrapper =
-    inherit size
+module inputWrapper =
+    [<Erase>]
+    type classNames =
+        static member inline root(value: string) = unbox ("classNames.root", value)
+        static member inline label(value: string) = unbox ("classNames.label", value)
+        static member inline required(value: string) = unbox ("classNames.required", value)
+        static member inline description(value: string) = unbox ("classNames.description", value)
+        static member inline error(value: string) = unbox ("classNames.error", value)
 
+
+[<Erase>]
+type inputWrapper =
     /// Contents of Input.Description component. If not set, description is not rendered.
     static member inline description(value: ReactElement) = Interop.mkAttr "description" value
     /// Contents of Input.Error component. If not set, error is not rendered.
@@ -131,13 +138,19 @@ type inputWrapper =
     /// attribute to the input. false by default.
     static member inline withAsterisk'(value: bool) = Interop.mkAttr "withAsterisk" value
 
+[<Erase>]
 type inputLabel =
-    inherit size
-
     /// Shows a required asterisk next to the label.
     static member inline required = Interop.mkAttr "required" true
     /// Determines whether the required asterisk should be displayed.
     static member inline required'(value: bool) = Interop.mkAttr "required" value
 
-type inputDescription = size
-type inputError = size
+[<Erase>]
+type inputDescription =
+    static member inline size(value: Domain.Size) = Interop.mkAttr "size" value
+    static member inline size(value: string) = Interop.mkAttr "size" value
+
+[<Erase>]
+type inputError =
+    static member inline size(value: Domain.Size) = Interop.mkAttr "size" value
+    static member inline size(value: string) = Interop.mkAttr "size" value

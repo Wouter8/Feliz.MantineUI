@@ -1,20 +1,37 @@
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <TargetFramework>netstandard2.0</TargetFramework>
+        <TargetFramework>net8.0</TargetFramework>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <LangVersion>8.0</LangVersion>
     </PropertyGroup>
     <ItemGroup>
         <Compile Include="Html.fs"/>
+        <Compile Include="Types.fs"/>
         <Compile Include="MantineUI.fs"/>
         <Compile Include="Props\ButtonProps.fs"/>
         <Compile Include="Props\ButtonGroupProps.fs"/>
+        <Compile Include="Props\TextProps.fs"/>
         <Compile Include="Props\TitleProps.fs"/>
         <Compile Include="Props\InputProps.fs"/>
         <Compile Include="Props\NumberInputProps.fs"/>
         <Compile Include="Props\TextInputProps.fs"/>
+        <Compile Include="Props\TableProps.fs"/>
+        <Compile Include="Props\CheckboxProps.fs"/>
+        <Compile Include="Props\DatePickerProps.fs"/>
+        <Compile Include="Props\DateInputProps.fs"/>
+        <Compile Include="Props\DateProviderProps.fs"/>
+        <Compile Include="Props\ActionIconProps.fs"/>
+        <Compile Include="Props\DrawerProps.fs"/>
+        <Compile Include="Props\SelectProps.fs"/>
+        <Compile Include="Props\ComboboxProps.fs"/>
+        <Compile Include="Props\InputBaseProps.fs"/>
         <Compile Include="Test.fs"/>
+        <Compile Include="Hooks.fs"/>
     </ItemGroup>
     <ItemGroup>
+        <PackageReference Include="Fable.Core" Version="4.3.0"/>
         <PackageReference Include="Feliz" Version="2.7.0"/>
+        <PackageReference Include="FSharp.Core" Version="8.0.200"/>
+        <PackageReference Update="FSharp.Core" Version="8.0.200"/>
     </ItemGroup>
 </Project>

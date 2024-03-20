@@ -6,17 +6,18 @@ open Fable.Core.JsInterop
 open Feliz
 
 
-[<AutoOpen ; EditorBrowsable(EditorBrowsableState.Never)>]
+[<AutoOpen; EditorBrowsable(EditorBrowsableState.Never)>]
 module HtmlHelper =
     [<Emit("$0 === undefined")>]
     let private isUndefined x = jsNative
+
     let fromFlatEntries (kvs: seq<string * obj>) : obj =
         let rec setProperty (target: obj) (key: string) (value: obj) =
             match key.IndexOf '.' with
             | -1 -> target?(key) <- value
             | sepIdx ->
-                let topKey = key.Substring (0, sepIdx)
-                let nestedKey = key.Substring (sepIdx + 1)
+                let topKey = key.Substring(0, sepIdx)
+                let nestedKey = key.Substring(sepIdx + 1)
 
                 if isUndefined target?(topKey) then
                     target?(topKey) <- obj ()
@@ -30,15 +31,16 @@ module HtmlHelper =
 
         target
 
-    let combineProps props children =
-        let combined =
-            Seq.append props [ prop.children (children :> seq<ReactElement>) ]
-            |> Seq.toArray
+    let combineProps props (children: List<ReactElement>) =
+        let combined = List.append props [ prop.children children ]
 
         !!combined |> fromFlatEntries
 
     let createElem tag props children =
         Interop.reactElement tag (combineProps props children)
+
+    let createElemWithoutChildren tag props =
+        Interop.reactElement tag (!!props |> fromFlatEntries)
 
 type Html =
     static member inline none: ReactElement = unbox null
@@ -100,13 +102,13 @@ type Html =
     static member inline h6 = createElem "h6"
     static member inline head = createElem "head"
     static member inline header = createElem "header"
-    static member inline hr = createElem "hr"
+    static member inline hr = createElemWithoutChildren "hr"
     static member inline html = createElem "html"
     static member inline i = createElem "i"
     static member inline iframe = createElem "iframe"
     static member inline img = createElem "img"
     static member inline image = createElem "image"
-    static member inline input = createElem "input"
+    static member inline input = createElemWithoutChildren "input"
     static member inline ins = createElem "ins"
     static member inline kbd = createElem "kbd"
     static member inline label = createElem "label"
@@ -177,10 +179,10 @@ type Html =
     static member inline tbody = createElem "tbody"
     static member inline td = createElem "td"
     static member inline template = createElem "template"
-    static member inline text (value: float) : ReactElement = unbox value
-    static member inline text (value: int) : ReactElement = unbox value
-    static member inline text (value: string) : ReactElement = unbox value
-    static member inline text (value: System.Guid) : ReactElement = unbox (string value)
+    static member inline text(value: float) : ReactElement = unbox value
+    static member inline text(value: int) : ReactElement = unbox value
+    static member inline text(value: string) : ReactElement = unbox value
+    static member inline text(value: System.Guid) : ReactElement = unbox (string value)
     static member inline textf = createElem "textf"
     static member inline textarea = createElem "textarea"
     static member inline textPath = createElem "textPath"
@@ -200,3 +202,7 @@ type Html =
     static member inline video = createElem "video"
     static member inline view = createElem "view"
     static member inline wbr = createElem "wbr"
+
+[<Erase>]
+type attr =
+    static member inline none = prop.className []
