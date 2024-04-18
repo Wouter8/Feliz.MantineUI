@@ -21,6 +21,9 @@ jobs:
         with:
           dotnet-version: '8.0'
 
+      - name: Install paket
+        run: dotnet tool restore
+
       - name: Install dependencies
         run: dotnet restore
 
