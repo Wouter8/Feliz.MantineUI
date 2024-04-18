@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Feliz.MantineUI", "Feliz.MantineUI\Feliz.MantineUI.fsproj", "{5D0B9EF4-AF9F-4369-B331-077F8C545483}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C5B0C658-42E8-4722-A00E-10762CC93E4D}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".paket", ".paket", "{63D22898-2999-450F-9C3E-95D6DBFB4299}"
 	ProjectSection(SolutionItems) = preProject
 		paket.dependencies = paket.dependencies
 	EndProjectSection
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Feliz.MantineUI", "Feliz.MantineUI\Feliz.MantineUI.fsproj", "{5D0B9EF4-AF9F-4369-B331-077F8C545483}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C5B0C658-42E8-4722-A00E-10762CC93E4D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

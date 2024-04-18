@@ -1,43 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
-    <PropertyGroup>
-        <TargetFramework>net8.0</TargetFramework>
-        <GenerateDocumentationFile>true</GenerateDocumentationFile>
-        <Description>Feliz-style Fable bindings for Mantine UI.</Description>
-        <Authors>Wouter van Acht</Authors>
-    </PropertyGroup>
-    <ItemGroup>
-        <Compile Include="Html.fs"/>
-        <Compile Include="Types.fs"/>
-        <Compile Include="MantineUI.fs"/>
-        <Compile Include="Props\ButtonProps.fs"/>
-        <Compile Include="Props\ButtonGroupProps.fs"/>
-        <Compile Include="Props\TextProps.fs"/>
-        <Compile Include="Props\TitleProps.fs"/>
-        <Compile Include="Props\InputProps.fs"/>
-        <Compile Include="Props\NumberInputProps.fs"/>
-        <Compile Include="Props\TextInputProps.fs"/>
-        <Compile Include="Props\TableProps.fs"/>
-        <Compile Include="Props\CheckboxProps.fs"/>
-        <Compile Include="Props\DatePickerProps.fs"/>
-        <Compile Include="Props\DateInputProps.fs"/>
-        <Compile Include="Props\DateProviderProps.fs"/>
-        <Compile Include="Props\ActionIconProps.fs"/>
-        <Compile Include="Props\DrawerProps.fs"/>
-        <Compile Include="Props\SelectProps.fs"/>
-        <Compile Include="Props\ComboboxProps.fs"/>
-        <Compile Include="Props\InputBaseProps.fs"/>
-        <Compile Include="Test.fs"/>
-        <Compile Include="Hooks.fs"/>
-    </ItemGroup>
-    <ItemGroup>
-        <PackageReference Include="Fable.Core" Version="4.3.0"/>
-        <PackageReference Include="Feliz" Version="2.7.0"/>
-    </ItemGroup>
-    <PropertyGroup>
-        <NpmDependencies>
-            <NpmPackage Name="@mantine/core" Version="gte 7 lt 8" ResolutionStrategy="max" />
-            <NpmPackage Name="@mantine/hooks" Version="gte 7 lt 8" ResolutionStrategy="max" />
-            <NpmPackage Name="@mantine/dates" Version="gte 7 lt 8" ResolutionStrategy="max" />
-        </NpmDependencies>
-    </PropertyGroup>
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <Description>Feliz-style Fable bindings for Mantine UI.</Description>
+    <Authors>Wouter van Acht</Authors>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Html.fs" />
+    <Compile Include="Types.fs" />
+    <Compile Include="MantineUI.fs" />
+    <Compile Include="Props\ButtonProps.fs" />
+    <Compile Include="Props\ButtonGroupProps.fs" />
+    <Compile Include="Props\TextProps.fs" />
+    <Compile Include="Props\TitleProps.fs" />
+    <Compile Include="Props\InputProps.fs" />
+    <Compile Include="Props\NumberInputProps.fs" />
+    <Compile Include="Props\TextInputProps.fs" />
+    <Compile Include="Props\TableProps.fs" />
+    <Compile Include="Props\CheckboxProps.fs" />
+    <Compile Include="Props\DatePickerProps.fs" />
+    <Compile Include="Props\DateInputProps.fs" />
+    <Compile Include="Props\DateProviderProps.fs" />
+    <Compile Include="Props\ActionIconProps.fs" />
+    <Compile Include="Props\DrawerProps.fs" />
+    <Compile Include="Props\SelectProps.fs" />
+    <Compile Include="Props\ComboboxProps.fs" />
+    <Compile Include="Props\InputBaseProps.fs" />
+    <Compile Include="Test.fs" />
+    <Compile Include="Hooks.fs" />
+  </ItemGroup>
+  <PropertyGroup>
+    <NpmDependencies>
+      <NpmPackage Name="@mantine/core" Version="gte 7 lt 8" ResolutionStrategy="max" />
+      <NpmPackage Name="@mantine/hooks" Version="gte 7 lt 8" ResolutionStrategy="max" />
+      <NpmPackage Name="@mantine/dates" Version="gte 7 lt 8" ResolutionStrategy="max" />
+    </NpmDependencies>
+  </PropertyGroup>
+  <Import Project="..\.paket\Paket.Restore.targets" />
 </Project>

@@ -11,3 +11,6 @@ obj/
 *.jsx.map
 *.fs.js
 *.fs.js.map
+packages/
+
+paket-files/

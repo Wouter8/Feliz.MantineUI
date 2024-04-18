@@ -1,5 +1,5 @@
-source https://api.nuget.org/v3/index.json
+source https://www.nuget.org/api/v2
 
-storage: none
-
+nuget FSharp.Core
+nuget Fable.Core 4.3.0
 nuget Feliz 2.7.0
