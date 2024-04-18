@@ -34,4 +34,11 @@
         <PackageReference Include="FSharp.Core" Version="8.0.200"/>
         <PackageReference Update="FSharp.Core" Version="8.0.200"/>
     </ItemGroup>
+    <PropertyGroup>
+        <NpmDependencies>
+            <NpmPackage Name="@mantine/core" Version="gte 7 lt 8" ResolutionStrategy="max" />
+            <NpmPackage Name="@mantine/hooks" Version="gte 7 lt 8" ResolutionStrategy="max" />
+            <NpmPackage Name="@mantine/dates" Version="gte 7 lt 8" ResolutionStrategy="max" />
+        </NpmDependencies>
+    </PropertyGroup>
 </Project>

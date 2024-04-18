@@ -2,10 +2,10 @@
   "version": 1,
   "isRoot": true,
   "tools": {
-    "paket": {
-      "version": "8.0.0",
+    "femto": {
+      "version": "0.19.0",
       "commands": [
-        "paket"
+        "femto"
       ]
     }
   }
