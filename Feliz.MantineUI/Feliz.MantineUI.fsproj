@@ -5,17 +5,16 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <Description>Feliz-style Fable bindings for Mantine UI.</Description>
     <Authors>Wouter van Acht</Authors>
-  </PropertyGroup>
-  <ItemGroup>
-    <Content Include="@(Compile)" Pack="true" PackagePath="fable/%(RelativeDir)%(Filename)%(Extension)" />
-    <Content Include="$(MSBuildThisFileFullPath)" Pack="true" PackagePath="fable/" />
-  </ItemGroup>
-  <PropertyGroup>
     <DebugType>embedded</DebugType>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <PackageTags>fable;fable-binding;fable-javascript;react</PackageTags>
   </PropertyGroup>
   <PropertyGroup>
-    <PackageTags>fable;fable-binding;fable-javascript</PackageTags>
+    <NpmDependencies>
+      <NpmPackage Name="@mantine/core" Version="gte 7 lt 8" ResolutionStrategy="max" />
+      <NpmPackage Name="@mantine/hooks" Version="gte 7 lt 8" ResolutionStrategy="max" />
+      <NpmPackage Name="@mantine/dates" Version="gte 7 lt 8" ResolutionStrategy="max" />
+    </NpmDependencies>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Html.fs" />
@@ -41,12 +40,8 @@
     <Compile Include="Test.fs" />
     <Compile Include="Hooks.fs" />
   </ItemGroup>
-  <PropertyGroup>
-    <NpmDependencies>
-      <NpmPackage Name="@mantine/core" Version="gte 7 lt 8" ResolutionStrategy="max" />
-      <NpmPackage Name="@mantine/hooks" Version="gte 7 lt 8" ResolutionStrategy="max" />
-      <NpmPackage Name="@mantine/dates" Version="gte 7 lt 8" ResolutionStrategy="max" />
-    </NpmDependencies>
-  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="*.fsproj; *.fs; *.js;" PackagePath="fable\" />
+  </ItemGroup>
   <Import Project="..\.paket\Paket.Restore.targets" />
 </Project>
