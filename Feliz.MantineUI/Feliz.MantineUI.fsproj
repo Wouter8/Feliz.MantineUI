@@ -7,6 +7,17 @@
     <Authors>Wouter van Acht</Authors>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="@(Compile)" Pack="true" PackagePath="fable/%(RelativeDir)%(Filename)%(Extension)" />
+    <Content Include="$(MSBuildThisFileFullPath)" Pack="true" PackagePath="fable/" />
+  </ItemGroup>
+  <PropertyGroup>
+    <DebugType>embedded</DebugType>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PackageTags>fable;fable-binding;fable-javascript</PackageTags>
+  </PropertyGroup>
+  <ItemGroup>
     <Compile Include="Html.fs" />
     <Compile Include="Types.fs" />
     <Compile Include="MantineUI.fs" />
